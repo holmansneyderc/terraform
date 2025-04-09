@@ -1,0 +1,32 @@
+name: Deploy S3 bucket on merge to main
+
+on:
+  push:
+    branches:
+      - main  # Se ejecuta cuando se hace push a main (ej. tras merge de dev)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v3
+
+    - name: Mensaje de prueba
+      run: echo "¡Se hizo merge a main!"
+
+    - name: Instalar Terraform
+      uses: hashicorp/setup-terraform@v3
+
+    - name: Inicializar Terraform
+      run: terraform init
+
+    - name: Planificar Terraform
+      run: terraform plan
+
+    - name: Aplicar Terraform
+      run: terraform apply -auto-approve
+      env:
+        AWS_ACCESS_KEY_ID: AKIAVXIOLVZAAXUR4UGD
+        AWS_SECRET_ACCESS_KEY: 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
