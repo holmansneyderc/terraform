@@ -30,3 +30,16 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
         AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+
+    - name: Verificar que AWS_ACCESS_KEY_ID está definido
+      run: |
+        if [ -z "$AWS_ACCESS_KEY_ID" ]; then
+          echo "❌ AWS_ACCESS_KEY_ID no está definido"
+          exit 1
+        else
+          echo "✅ AWS_ACCESS_KEY_ID está definido"
+        fi
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      
+    
