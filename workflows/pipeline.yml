@@ -28,5 +28,5 @@ jobs:
     - name: Aplicar Terraform
       run: terraform apply -auto-approve
       env:
-        AWS_ACCESS_KEY_ID:
-        AWS_SECRET_ACCESS_KEY: 
+        AWS_ACCESS_KEY_ID: AKIAVXIOLVZAAXUR4UGD
+        AWS_SECRET_ACCESS_KEY: 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
